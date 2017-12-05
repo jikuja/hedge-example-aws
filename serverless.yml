@@ -11,7 +11,7 @@
 #
 # Happy Coding!
 
-service: aws-nodejs # NOTE: update this with your service name
+service: aws-hedge-test # NOTE: update this with your service name
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
@@ -20,6 +20,11 @@ service: aws-nodejs # NOTE: update this with your service name
 provider:
   name: aws
   runtime: nodejs6.10
+  profile: default
+  region: eu-west-2
+  stage: prod
+
+# note: you can select profile in command line with --aws-profile
 
 # you can overwrite defaults here
 #  stage: dev
@@ -56,7 +61,21 @@ provider:
 
 functions:
   hello:
-    handler: handler.hello
+    handler: target/handler_core__hello/index.handler
+    events:
+      - http: ANY hello
+  hello-json:
+    handler: target/handler_core__hello-json/index.handler
+    events:
+      - http: ANY hello-json
+  calc:
+    handler: target/handler_core__calc/index.handler
+    events:
+      - http: ANY calc
+  fail-hard:
+    handler: target/handler_core__fail-hard/index.handler
+    events:
+      - http: ANY fail-hard
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
