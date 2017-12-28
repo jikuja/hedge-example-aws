@@ -1,5 +1,9 @@
 {
   "dependencies": {
+    "leftpad": "0.0.1",
     "xhr2": "^0.1.4"
+  },
+  "devDependencies": {
+    "serverless-hedge-plugin": "^0.0.1"
   }
 }

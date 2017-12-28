@@ -26,6 +26,9 @@ provider:
 
 # note: you can select profile in command line with --aws-profile
 
+plugins:
+  - serverless-hedge-plugin
+
 # you can overwrite defaults here
 #  stage: dev
 #  region: us-east-1
@@ -61,21 +64,25 @@ provider:
 
 functions:
   hello:
-    handler: target/handler_core__hello/index.handler
+    hedge: handler.core/hello
     events:
       - http: ANY hello
   hello-json:
-    handler: target/handler_core__hello-json/index.handler
+    hedge: handler.core/hello-json
     events:
       - http: ANY hello-json
   calc:
-    handler: target/handler_core__calc/index.handler
+    hedge: handler.core/calc
     events:
       - http: ANY calc
   fail-hard:
-    handler: target/handler_core__fail-hard/index.handler
+    hedge: handler.core/fail-hard
     events:
       - http: ANY fail-hard
+  vanilla-js:
+    handler: vanillajs.hello
+    events:
+      - http: ANY vanilla-js
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
