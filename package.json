@@ -1,6 +1,13 @@
 {
+  "name": "hedge-example-aws",
+  "version": "1.0.0",
+  "keywords": [
+    "aws",
+    "serverless",
+    "hedge"
+  ],
   "dependencies": {
-    "leftpad": "0.0.1",
+    "leftpad": "^0.0.1",
     "xhr2": "^0.1.4"
   },
   "devDependencies": {
