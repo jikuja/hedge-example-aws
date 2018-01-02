@@ -6,8 +6,6 @@ const path = require('path');
 const process = require('process');
 const qs = require('querystring');
 
-const editJsonFile = require("edit-json-file");
-
 const sep = path.sep;
 const tmpDir = os.tmpdir();
 
