@@ -11,6 +11,7 @@
     "xhr2": "^0.1.4"
   },
   "devDependencies": {
-    "serverless-hedge-plugin": "0.0.1-SNAPSHOT"
+    "serverless-hedge-plugin": "0.0.1-SNAPSHOT",
+    "serverless-offline": "^3.16.0"
   }
 }

@@ -28,6 +28,7 @@ provider:
 
 plugins:
   - serverless-hedge-plugin
+  - serverless-offline
 
 # you can overwrite defaults here
 #  stage: dev
