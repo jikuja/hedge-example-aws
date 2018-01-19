@@ -1,17 +1,14 @@
 {
   "name": "hedge-example-aws",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "keywords": [
     "aws",
     "serverless",
+    "lambda",
     "hedge"
   ],
   "dependencies": {
     "leftpad": "^0.0.1",
     "xhr2": "^0.1.4"
-  },
-  "devDependencies": {
-    "serverless-hedge-plugin": "next",
-    "serverless-offline": "^3.16.0"
   }
 }
