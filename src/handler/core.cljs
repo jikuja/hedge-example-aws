@@ -1,6 +1,17 @@
 (ns handler.core
-  (:require [cljs.nodejs])
+  (:require [cljs.nodejs]
+            [cljs.core.async :refer [chan]]
+            [taoensso.timbre :as timbre
+             :refer (log  trace  debug  info  warn  error  fatal  report
+                     logf tracef debugf infof warnf errorf fatalf reportf
+                     spy get-env log-env)])
   (:require-macros [cljs.core.async.macros :refer [go]]))
+
+; Set logging level here. Level is set as soon as namespace
+; is required by handler code. 
+
+; default logging level is :debug
+(timbre/set-level! :trace)
 
 (def operators {"+" +
                 "-" -
@@ -32,14 +43,20 @@
       :else
       (throw (js/Error. "Bad operator type!")))))
 
+(defn log-hello
+  []
+  (info "Hello, Timbre!"))
+
 (defn hello
   [req]
+  (log-hello)
+  (debug timbre/*config*)
   "hello!")
 
 (defn hello-json
   [req]
   (go
-    {:body {:key1 "value1" :key2 (leftpad 42 5)}}))
+    {:body {:key1 "value1" :key2 5}}))
 
 (defn fail-hard
   [req]
