@@ -2,5 +2,8 @@
 node_modules
 jspm_packages
 
+# Clojure
+.nrepl-history
+
 # Hedge
 target

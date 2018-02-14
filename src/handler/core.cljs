@@ -4,11 +4,10 @@
             [taoensso.timbre :as timbre
              :refer (log  trace  debug  info  warn  error  fatal  report
                      logf tracef debugf infof warnf errorf fatalf reportf
-                     spy get-env log-env)])
+                     spy get-env log-env)]
+            [oops.core :refer [oget oset! ocall oapply ocall! oapply!
+                               oget+ oset!+ ocall+ oapply+ ocall!+ oapply!+]])
   (:require-macros [cljs.core.async.macros :refer [go]]))
-
-; Set logging level here. Level is set as soon as namespace
-; is required by handler code. 
 
 ; default logging level is :debug
 (timbre/set-level! :trace)
@@ -55,8 +54,8 @@
 
 (defn hello-json
   [req]
-  (go
-    {:body {:key1 "value1" :key2 5}}))
+  (info "queue triggered function")
+  {:body {:key1 "value1" :key2 5}})
 
 (defn fail-hard
   [req]
