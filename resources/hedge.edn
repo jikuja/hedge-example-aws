@@ -1,4 +1,4 @@
 {:api {"calc" {:handler handler.core/calc} 
        "fail-hard" {:handler handler.core/fail-hard}}
  :timer {"timer-10" {:handler handler.core/hello :cron "*/10 * * * *"}}
- :queue {"hello" {:handler handler.core/hello-json :queue "hello"}}}
+ :queue {"hello" {:handler handler.core/hello-json :queue "hello" :connection "AzureWebJobsStorage"}}}
