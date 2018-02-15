@@ -6,7 +6,8 @@
                      logf tracef debugf infof warnf errorf fatalf reportf
                      spy get-env log-env)]
             [oops.core :refer [oget oset! ocall oapply ocall! oapply!
-                               oget+ oset!+ ocall+ oapply+ ocall!+ oapply!+]])
+                               oget+ oset!+ ocall+ oapply+ ocall!+ oapply!+]]
+            [async-error.core :refer-macros [go-try <?]])
   (:require-macros [cljs.core.async.macros :refer [go]]))
 
 ; default logging level is :debug
@@ -57,8 +58,15 @@
   (info "queue triggered function")
   {:body {:key1 "value1" :key2 5}})
 
+(defn broken-function
+  []
+  (throw (js/Error. "Failing. Hedge should catch this!")))
+
+
 (defn fail-hard
   [req]
-  (go
-    (throw (js/Error. "Fail hard! Hedge does not catch this? And AWS/Azure does not handle this properly"))
+  (go-try
+    (info "before breaking things")
+    (broken-function)
+    (info "after braking thing")
     "Fake return value which should be handled by hedge."))

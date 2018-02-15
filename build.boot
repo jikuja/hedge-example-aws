@@ -5,7 +5,8 @@
                           [crisptrutski/boot-cljs-test "0.3.4" :scope "test"]
                           [siili/boot-hedge "0.1.0" :scope "test"]
                           [siili/hedge "0.1.0"]
-                          [binaryage/oops "0.5.8"]])
+                          [binaryage/oops "0.5.8"]
+                          [org.clojars.akiel/async-error "0.2"]])
 
 (require '[boot-hedge.core :as hedge])
 (hedge/hedge-init!)
